@@ -1,0 +1,22 @@
+generator client {
+    provider = "prisma-client-js"
+    output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DB_URL")
+}
+
+model Mobile {
+    id          String   @id @default(uuid()) @map("_id")
+    modelName       String
+    brand       String
+    ram         String
+    rom         String
+    battery     String
+    display     String
+    description String
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}
