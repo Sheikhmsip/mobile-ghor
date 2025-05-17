@@ -3,7 +3,9 @@ import status from "http-status";
 import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
+
 export async function POST(req: NextRequest) {
+  
   const body = await req.json();
 
   const mobile = await prisma.mobile.create({
@@ -14,8 +16,7 @@ export async function POST(req: NextRequest) {
       ram: body.ram,
       battery: body.battery,
       display: body.display,
-      description: body.description
-,
+      description: body.description,
     },
   });
   return NextResponse.json(
