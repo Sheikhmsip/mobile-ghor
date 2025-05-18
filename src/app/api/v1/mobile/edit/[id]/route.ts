@@ -1,9 +1,9 @@
 import { PrismaClient } from "@/generated/prisma";
 import status from "http-status";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
-export async function PUT(req: NextResponse, {params}: {params: Promise<{id: string}>}) {
+export async function PUT(req: NextRequest, {params}: {params: Promise<{id: string}>}) {
   const body = await req.json();
   const { id } = await params;
   const mobile = await prisma.mobile.update({
@@ -25,7 +25,7 @@ export async function PUT(req: NextResponse, {params}: {params: Promise<{id: str
   }
   return NextResponse.json(
     {
-        message: `id: ${id} update successfully!`,
+        message: "Mobile update successfully!",
         data: mobile,
     },
     {status: status.OK}
