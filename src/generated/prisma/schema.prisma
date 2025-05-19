@@ -16,7 +16,7 @@ model Mobile {
   rom         String
   battery     String
   display     String
-  discription String
+  description String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
