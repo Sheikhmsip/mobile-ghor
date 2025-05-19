@@ -10,7 +10,7 @@ export async function GET(req: NextResponse) {
   const page = searchParams.get("page") ? Number(searchParams.get("page")) : 1;
   const limit = searchParams.get("limit")
     ? Number(searchParams.get("limit"))
-    : 10;
+    : 5;
   const skip = limit * (page - 1);
 
   // Sorting
@@ -46,7 +46,7 @@ export async function GET(req: NextResponse) {
   return NextResponse.json(
     {
       message: "Mobile data get successfully",
-      count: count,
+      total: count,
       page: page,
       limit: limit,
       data: mobiles,
